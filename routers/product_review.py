@@ -18,7 +18,7 @@ async def retrieve_all_products():
 
 
 @product_reviews_router.post("/")
-async def add_product_review(review: ProductReview) -> dict:
+async def add_product_review(review: ProductReview) -> dict[str, str]:
     """The function endpoint for adding a product review"""
     await review.create()
     return {"message": "Review Added Successfully"}

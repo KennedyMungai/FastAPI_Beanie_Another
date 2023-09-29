@@ -17,7 +17,7 @@ async def retrieve_all_products():
     return await ProductReview.find_all().to_list()
 
 
-@product_reviews_router.get("/")
+@product_reviews_router.post("/")
 async def add_product_review(review: ProductReview) -> dict:
     """The function endpoint for adding a product review"""
     await review.create()

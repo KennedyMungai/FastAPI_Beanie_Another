@@ -11,11 +11,7 @@ app = FastAPI(
 
 @app.get(
     "/",
-    tags=["Root"],
-    title="Root",
-    description="Root endpoint for the application",
-    response_model=dict[str, str],
-    response_model_exclude_unset=True
+    tags=["Root"]
 )
 async def root() -> dict[str, str]:
     """The root endpoint for the application"""

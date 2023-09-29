@@ -5,6 +5,7 @@ from models.models import ProductReview
 
 
 async def init_db():
+    """The init db function"""
     client = motor.motor_asyncio.AsyncIOMotorClient(
         "mongodb://localhost:27017/productreviews")
 

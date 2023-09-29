@@ -30,3 +30,10 @@ async def get_review_record(id: PydanticObjectId) -> ProductReview:
     """The function to retrieve a single product review record"""
     review = await ProductReview.get(id)
     return review
+
+
+@product_reviews_router.put("/{id}")
+async def update_student_data(id: PydanticObjectId, review: ProductReview) -> dict[str, str]:
+    """The function to update a product review record"""
+    await ProductReview.get(id).update(review)
+    return {"message": "Review Updated Successfully"}

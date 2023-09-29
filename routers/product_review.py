@@ -1,9 +1,10 @@
 """The product review route"""
-from fastapi import APIRouter, HTTPException
-from beanie import PydanticObjectId
 from typing import List
-from models.models import ProductReview
 
+from beanie import PydanticObjectId
+from fastapi import APIRouter, HTTPException
+
+from models.models import ProductReview
 
 product_reviews_router = APIRouter(
     prefix="/product_reviews",

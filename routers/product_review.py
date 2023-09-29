@@ -37,3 +37,16 @@ async def update_student_data(id: PydanticObjectId, review: ProductReview) -> di
     """The function to update a product review record"""
     await ProductReview.get(id).update(review)
     return {"message": "Review Updated Successfully"}
+
+
+@product_reviews_router.delete("/{id}")
+async def delete_student_data(id: PydanticObjectId) -> dict[str, str]:
+    """The endpoint to delete a record"""
+    record = await ProductReview.get(id)
+
+    if not record:
+        raise HTTPException(status_code=404, detail="Record not found")
+
+    await record.delete()
+
+    return {"message": "Record Deleted Successfully"}

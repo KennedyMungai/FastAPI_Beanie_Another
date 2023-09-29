@@ -13,7 +13,7 @@ product_reviews_router = APIRouter(
 
 
 @product_reviews_router.get("/")
-async def retrieve_all_products():
+async def retrieve_all_products() -> List[ProductReview]:
     """Retrieve all products"""
     return await ProductReview.find_all().to_list()
 
@@ -23,3 +23,10 @@ async def add_product_review(review: ProductReview) -> dict[str, str]:
     """The function endpoint for adding a product review"""
     await review.create()
     return {"message": "Review Added Successfully"}
+
+
+@product_reviews_router.get("/{id}")
+async def get_review_record(id: PydanticObjectId) -> ProductReview:
+    """The function to retrieve a single product review record"""
+    review = await ProductReview.get(id)
+    return review
